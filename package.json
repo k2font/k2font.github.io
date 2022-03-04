@@ -4,7 +4,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "type-check": "tsc"
+    "export": "next build && next export",
+    "typecheck": "tsc"
   },
   "dependencies": {
     "next": "latest",
