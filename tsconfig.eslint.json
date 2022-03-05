@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",  
+  "includes": [
+    "utils/**/*.ts",
+    "pages/**/*.ts",
+    "pages/**/*.tsx",
+    ".eslintrc.json",
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "docs"
+  ]
+}
