@@ -1,15 +1,44 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import { NextPage, InferGetStaticPropsType } from "next";
+import Link from "next/link";
+import { getAllContents } from "../utils/api";
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
-  </Layout>
-)
+export const getStaticProps = async () => {
+  const contents = getAllContents(["slug", "title", "date", "tags"]);
 
-export default IndexPage
+  return {
+    props: { contents },
+  }
+};
+
+type Props = InferGetStaticPropsType<typeof getStaticProps>;
+
+const IndexPage: NextPage<Props> = ({ contents }) => {
+  return (
+    <>
+      <h1>
+        k2fontのブログ
+      </h1>
+      <ul>
+        {contents.map((content) => {
+          return (
+            <div key={content.slug}>
+              <li>
+                <Link href={`/contents/${content.slug}`}>
+                  <h2>{content.title}</h2>
+                </Link>
+                <p>{content.date}</p>
+                <ul>
+                  {content.tags.map((tag) => {
+                    return <li key={tag}>{tag}</li>
+                  })}
+                </ul>
+              </li>
+            </div>
+          );
+        })}
+      </ul>
+    </>
+  );
+};
+
+export default IndexPage;
