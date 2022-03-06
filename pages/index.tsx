@@ -64,7 +64,7 @@ const Main = css`
   }
 
   a {
-    color: #f64f59;
+    color: #fc64c9;
     text-decoration: none;
   };
 
@@ -89,9 +89,9 @@ const Background = css`
   left: 80%;
 
   aspect-ratio: 1 / 1;
-  background: linear-gradient(45deg, #C6FFDD, #FBD786, #f64f59);
+  background: linear-gradient(45deg, #431bf5, #fc64c9);
   border-radius: 50%;
-  filter: blur(30px);
+  filter: blur(50px);
   width: min(100%, 400px);
 `;
 
